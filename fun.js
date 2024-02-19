@@ -5,33 +5,44 @@ function Scrolldown(){
 
 let setc=0;
 let totalsat=40;
+
+let ch=[];
 function change(elementId) {
     var element = document.getElementById(elementId);
     var color=element.style.backgroundColor;
 
-    if(color==='rgb(76, 175, 80)'){
-       element.style.backgroundColor = " rgb(226 232 240)";
-       element.style.color = "black";
-       removePlaceItem(elementId);
-       setc--;
-       document.getElementById('seatcount').innerText=setc;
-       totalsat++;
-        document.getElementById('totalseat').innerText=totalsat;
-    }
-    else{
+    
+        if(setc>=4){
+            window.alert("You have selected maximum");
+        }
+        else{
+        
         element.style.backgroundColor = "#4CAF50";
         element.style.color = "white";
-        addPlaceItem(elementId);
+        
+        
+        const index = ch.indexOf(elementId);
+        if (index === -1) {
+            addPlaceItem(elementId);
         calculate('add');
         setc++;
         document.getElementById('seatcount').innerText=setc;
         totalsat--;
         document.getElementById('totalseat').innerText=totalsat;
+        ch.push(elementId);
+        } else {
+            window.alert('added');
+        }
+        
+        }
+       
     }
    
-}
+
+
 
 function addPlaceItem(elementId) {
+    
     var addPlaceDiv = document.getElementById('addplace');
 
     var newPlaceItem = document.createElement('div');
@@ -52,10 +63,15 @@ function removePlaceItem(elementId) {
     
 }
 function coupon(){
+    if(setc==4){
     let inputField = document.getElementById('code');
     let couponCode = inputField.value;
     inputField.value= '';
      calculate(couponCode);
+    }
+    else{
+        window.alert("You nedd to select 4 seat");
+    }
     
 }
 let total=0;
@@ -90,9 +106,10 @@ inputField.addEventListener('input', checkConditions);
 seatNumField.addEventListener('input', checkConditions); 
 
 function checkConditions() {
-    
+
     if (inputField.value.trim() !== '' &&  parseInt(seatNumField.innerText )!== 0) {
-        myButton.disabled = false; 
+        myButton.disabled = false;
+    } else {
         myButton.disabled = true; 
     }
 }
@@ -104,7 +121,7 @@ function go() {
     const hiddenDiv2= document.getElementById('main-2');
     const hiddenDiv3= document.getElementById('main-3');
 
-   
+
     hiddenDiv.classList.toggle('hidden');
     hiddenDiv1.classList.toggle('hidden');
     hiddenDiv2.classList.toggle('hidden');
@@ -115,9 +132,13 @@ function back(){
     const hiddenDiv1 = document.getElementById('main-1');
     const hiddenDiv2= document.getElementById('main-2');
     const hiddenDiv3= document.getElementById('main-3');
-    
+   
     hiddenDiv.classList.toggle('hidden');
     hiddenDiv1.classList.toggle('hidden');
     hiddenDiv2.classList.toggle('hidden');
     hiddenDiv3.classList.toggle('hidden');
 }
+
+
+
+
