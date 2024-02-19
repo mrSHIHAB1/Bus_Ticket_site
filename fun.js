@@ -85,27 +85,26 @@ const inputField = document.getElementById('pphone');
 const seatNumField = document.getElementById('seatcount');
 const myButton = document.getElementById('mybtn');
 
-// Add event listeners to the input field and the seat number field
+
 inputField.addEventListener('input', checkConditions);
-seatNumField.addEventListener('input', checkConditions); // Assuming you meant to add an event listener here
+seatNumField.addEventListener('input', checkConditions); 
 
 function checkConditions() {
-    // Check if the input field and the seat number field are not empty
+    
     if (inputField.value.trim() !== '' &&  parseInt(seatNumField.innerText )!== 0) {
-        myButton.disabled = false; // Enable the button if conditions are met
-    } else {
-        myButton.disabled = true; // Otherwise, disable the button
+        myButton.disabled = false; 
+        myButton.disabled = true; 
     }
 }
 
 function go() {
-    // Get reference to the hidden div
+    
     const hiddenDiv = document.getElementById('next');
     const hiddenDiv1 = document.getElementById('main-1');
     const hiddenDiv2= document.getElementById('main-2');
     const hiddenDiv3= document.getElementById('main-3');
 
-    // Toggle the visibility of the hidden div
+   
     hiddenDiv.classList.toggle('hidden');
     hiddenDiv1.classList.toggle('hidden');
     hiddenDiv2.classList.toggle('hidden');
@@ -116,7 +115,7 @@ function back(){
     const hiddenDiv1 = document.getElementById('main-1');
     const hiddenDiv2= document.getElementById('main-2');
     const hiddenDiv3= document.getElementById('main-3');
-    // Toggle the visibility of the hidden div
+    
     hiddenDiv.classList.toggle('hidden');
     hiddenDiv1.classList.toggle('hidden');
     hiddenDiv2.classList.toggle('hidden');
